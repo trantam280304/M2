@@ -45,7 +45,7 @@ $xuly = [
     </tbody>
     <style>
         
-        table {
+        table { 
             border-collapse: collapse;
             width: 100%;
         }
