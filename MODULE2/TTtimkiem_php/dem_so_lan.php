@@ -2,7 +2,11 @@
 if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     $tim2 = $_REQUEST["tim"];
 
-$arr = [1, 3, 4, 5, 6, 5, 1];
+$arr = [1, 3, 4, 5, 6, 5, 1,1];
+
+echo"<pre>";
+print_r($arr);
+echo "</pre>";
 $count = 0;
 foreach ($arr as $key => $value) {
     if ($value == $tim2) {
