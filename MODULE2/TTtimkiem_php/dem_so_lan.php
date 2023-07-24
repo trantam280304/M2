@@ -1,27 +1,31 @@
-<?php
-if ($_SERVER["REQUEST_METHOD"] == 'POST') {
-    $tim2 = $_REQUEST["tim"];
-
-$arr = [1, 3, 4, 5, 6, 5, 1,1];
-
-echo"<pre>";
-print_r($arr);
-echo "</pre>";
-$count = 0;
-foreach ($arr as $key => $value) {
-    if ($value == $tim2) {
-        $count += 1;
+<p id="so"></p>
+​
+<script>
+    var numbers = [];
+    for(var i = 1; i <= 100;i++){
+        numbers.push(i);
     }
-}
-echo $count;
-}
-
-
-?>
-
- <form action="" method="post">
-    <label>Nhap so can tim</label>
-    <input type="text" name="tim" placeholder="nhap so can tim">
-    <input type="submit" name="nhap">
-</form>
-
+    var L = 0;
+    var R = numbers.length - 1;
+    var M = Math.floor( (L+R) / 2 ) ;
+    document.getElementById('so').innerHTML = 'So do co phai la ' + numbers[M] + '?';
+​
+    function yes(){
+		alert('Thanks !')
+		location.reload();
+    }
+    function lon_hon(){
+        R = M - 1;
+        M = Math.floor( (L+R) / 2 ) ;
+        document.getElementById('so').innerHTML = 'So do co phai la ' + numbers[M] + '?';
+    }
+    function nho_hon(){
+        L = M + 1;
+        M = Math.floor( (L+R) / 2 ) ;
+        document.getElementById('so').innerHTML = 'So do co phai la ' + numbers[M] + '?';
+    }
+</script>
+​
+<button onclick="yes()"> Dung </button>
+<button onclick="lon_hon()"> Lon hon </button>
+<button onclick="nho_hon()"> Nho hon </button>
