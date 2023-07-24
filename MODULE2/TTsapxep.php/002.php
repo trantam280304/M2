@@ -1,7 +1,4 @@
 <?php
-
-
-
 // xap sep noi bot  bubbleSort
  $mang = [2, 3, 2, 5, 6, 1, -2, 3, 14, 12];
  
@@ -21,7 +18,4 @@
  echo '<pre>';
  print_r($mang);
  echo '</pre>'
-
-
-
 ?>
