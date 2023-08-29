@@ -18,10 +18,10 @@ switch ($controller) {
         require_once 'Controllers/CategoryController.php';
         $objController = new CategoryController();
         break;
-    // case 'user':
-    //     require_once 'controllers/UserController.php';
-    //     $objController = new UserController();
-    //     break;
+        // case 'product':
+        //     require_once 'Controllers/ProductController.php';
+        //     $objController = new ProductController();
+        //     break;  
     // case 'customer':
     //     require_once 'controllers/CustomerController.php';
     //     $objController = new CustomerController();

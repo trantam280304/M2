@@ -1,4 +1,3 @@
-
 <form action="index.php?action=store" method="post" class="my-form" onsubmit="return validateForm()" enctype="multipart/form-data">
     <h3>THÊM DANH MỤC</h3>
     <div class="form-group">
@@ -9,10 +8,11 @@
     <div class="form-group">
         <label for="description">MÔ TẢ:</label>
         <input type="text" id="description" name="description" class="form-input" placeholder="Điền phần mô tả">
+        <span id="description-error" class="error-message"></span>
         
         <label class="form-label">IMAGE</label>
-        <input type="file" class="form-control" name="IMAGE">
-
+        <input type="file" class="form-control" name="IMAGE" id="image"> <!-- Thêm ID cho trường tệp -->
+        <span id="image-error" class="error-message"></span> <!-- Thêm thông báo lỗi cho trường tệp -->
     </div>
     <input type="submit" value="THÊM" class="form-button">
 </form>
@@ -22,29 +22,39 @@
         color: red;
     }
 </style>
-
-<!-- <script>
+<script>
     function validateForm() {
         var nameInput = document.getElementById("name");
         var descriptionInput = document.getElementById("description");
+        var imageInput = document.getElementById("image"); // Sử dụng ID của trường tệp
         var nameError = document.getElementById("name-error");
         var descriptionError = document.getElementById("description-error");
+        var imageError = document.getElementById("image-error");
         
         if (nameInput.value.trim() === "") {
             nameError.textContent = "Vui lòng điền tên danh mục.";
             return false; // Ngăn form được gửi đi
+        } else {
+            nameError.textContent = ""; // Xóa thông báo lỗi nếu có
         }
         
         if (descriptionInput.value.trim() === "") {
             descriptionError.textContent = "Vui lòng điền phần mô tả.";
             return false; // Ngăn form được gửi đi
+        } else {
+            descriptionError.textContent = ""; // Xóa thông báo lỗi nếu có
         }
         
-        nameError.textContent = ""; // Xóa thông báo lỗi nếu có
-        descriptionError.textContent = ""; // Xóa thông báo lỗi nếu có
+        if (imageInput.value.trim() === "") {
+            imageError.textContent = "Vui lòng chọn một tệp.";
+            return false; // Ngăn form được gửi đi
+        } else {
+            imageError.textContent = ""; // Xóa thông báo lỗi nếu có
+        }
+        
         return true; // Cho phép form được gửi đi
     }
-</script> -->
+</script>
 <style>
     .my-form {
         max-width: 500px;
