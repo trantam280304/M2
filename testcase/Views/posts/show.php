@@ -16,3 +16,24 @@
     </tr>
     
 </table>
+<style>
+    .post-details {
+        width: 40%;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+    }
+
+    .post-details h3 {
+        margin-bottom: 10px;
+    }
+
+    .post-details td {
+        padding: 8px;
+        border: 1px solid #ccc;
+    }
+
+    .post-details td:first-child {
+        font-weight: bold;
+        background-color: #f2f2f2;
+    }
+</style>
