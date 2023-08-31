@@ -13,18 +13,15 @@ class PostController
         $total_pages = $data['total_pages'];
         $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
 
-        // $successMessage = '';    
-
-        // if (isset($_GET['success']) && $_GET['success'] == 1) {
-        //     $successMessage = 'Thêm thành công!';
-        // }
-
-        // if (isset($_GET['delete_success']) && $_GET['delete_success'] == 1) {
-        //     $successMessage = 'Xóa thành công!';
-        // }
-        // if (isset($_GET['success']) && $_GET['success'] == 2) {
-        //     $successMessage = 'Cập nhật thành công!';
-        // }
+        if (isset($_GET['success']) && $_GET['success'] == 1) {
+            $successMessage = 'THÊM THÀNH CÔNG!';
+        }
+        else if (isset($_GET['success']) && $_GET['success'] == 2) {
+            $successMessage1 = 'CẬP NHẬT THÀNH CÔNG!';
+        }
+        else if (isset($_GET['success']) && $_GET['success'] == 3) {
+            $successMessage2 = 'XÓA THÀNH CÔNG!';
+        }
         require_once 'Views/posts/index.php';
     }
 
@@ -32,7 +29,7 @@ class PostController
     // Hien thi form them moi
     public function create()
     {
-        $users = User::all();
+        $items = User::create();//3
         require_once 'Views/posts/create.php';
     }
     // Xu ly them moi
@@ -43,8 +40,7 @@ class PostController
 
         if (Post::store($data)) {
             $successMessage = 'Thêm thành công!';
-            $redirectUrl = "index.php?controller=post&action=index&success=1";
-            header("Location: $redirectUrl");
+            echo '<script>window.location.href = "index.php?controllers=post&action=index&success=1";</script>';
             exit();
         } else {
             $errorMessage = 'Thêm thất bại!';
@@ -66,7 +62,7 @@ class PostController
         $id = $_GET['id'];
         Post::update( $id, $_POST );
         // Chuyen huong ve trang danh sach
-        header("Location: index.php?controller=post&action=index&success=2");
+        echo '<script>window.location.href = "index.php?controllers=post&action=index&success=2";</script>';
     }
     // Xoa
     public function destroy()
@@ -74,7 +70,7 @@ class PostController
         $id = $_GET['id'];
         Post::delete($id);
         // Chuyển hướng về trang danh sách
-        header("Location: index.php?controller=post&action=index&delete_success=1");
+        echo '<script>window.location.href = "index.php?controllers=post&action=index&success=3";</script>';
         exit();
     }
     // Xem chi tiet

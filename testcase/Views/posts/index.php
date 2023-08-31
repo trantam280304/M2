@@ -1,35 +1,11 @@
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.0/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.0/dist/sweetalert2.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<a href="index.php?action=create" class="create-link">Them moi</a><br></br>
+
 
 <table border="1">
-    <tr>
-        <th>STT</th>
-        <th>email:</th>
-        <th>Tiêu đề</th>
-        <th>Nội dung:</th>
-        <th>ACTION</th>
-    </tr>
-    <form action="index.php?action=store" method="get">
-        <div class="search-container">
-            <input type="text" name="search" placeholder="Nhập từ khóa tìm kiếm">
-            <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
-    
-    <!-- Bắt đầu lặp -->
-    <?php foreach ($data['posts'] as $r) : ?>
 
-        <tr>
-        <td><?php echo $r['id']; ?></td>
-            <td><?php echo $r['email']; ?></td>
-            <td><?php echo $r['title']; ?></td>
-            <td><?php echo $r['content']; ?></td>
-            <td>
-                <a href="index.php?action=edit&id=<?php echo $r['id']; ?>" class="edit-link">Sửa</a>
-                <a href="index.php?action=show&id=<?php echo $r['id']; ?>" class="view-link">Xem</a>
-                <a onclick="return confirm('Bạn có muốn xóa không ?');" href="index.php?action=destroy&id=<?php echo $r['id']; ?>" class="delete-link">Xóa</a>
-      
-            </td>
-        </tr>
-    <?php endforeach; ?>
     <!-- Kết thúc vòng lặp -->
 </table>
 <style>
@@ -39,7 +15,8 @@
         border-collapse: collapse;
     }
 
-    th, td {
+    th,
+    td {
         padding: 10px;
         text-align: left;
         border-bottom: 1px solid #ddd;
@@ -50,7 +27,9 @@
     }
 
     /* Link styles */
-    .edit-link, .view-link, .delete-link {
+    .edit-link,
+    .view-link,
+    .delete-link {
         display: inline-block;
         padding: 5px 10px;
         background-color: #4CAF50;
@@ -59,7 +38,9 @@
         border-radius: 3px;
     }
 
-    .edit-link:hover, .view-link:hover, .delete-link:hover {
+    .edit-link:hover,
+    .view-link:hover,
+    .delete-link:hover {
         background-color: #45a049;
     }
 
@@ -70,6 +51,7 @@
     .delete-link:hover {
         background-color: #d32f2f;
     }
+
     /* Link styles */
     .create-link {
         display: inline-block;
@@ -83,30 +65,12 @@
     .create-link:hover {
         background-color: #45a049;
     }
+
     /* Thêm CSS cho biểu tượng tìm kiếm */
-    .search-container {
-        position: relative;
-        margin-bottom: 20px;
-    }
-
-    .search-container input[type="text"] {
-        width: 40%;
-        padding: 8px;
-        border: 1px solid #ccc
- 
-    }
-    .search-button i {
-        color: #555;
-        font-size: 25px;
-    }  
-    .search-button {
-    display: inline-block;
-    margin-left: 10px;
-    vertical-align: middle;
-}
-
+  
     /* Nếu bạn chưa bao gồm Font Awesome trong trang của mình */
     @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
     .card-footer {
         display: flex;
         justify-content: center;
@@ -140,7 +104,110 @@
         background-color: #f2f2f2;
     }
 </style>
-<div class="card-footer">
+
+<!-- <div class="main-panel">
+    <div class="content-wrapper"> -->
+        <?php
+        // Kiểm tra xem có thông báo thành công hay không
+        if (isset($successMessage)) {
+            echo '<script>
+            Swal.fire({
+                title: "<h6>THÊM THÀNH CÔNG !</h6>",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 2000,
+                width: "300px"
+                
+                
+            });
+          </script>';
+        } else if (isset($successMessage1)) {
+            echo '<script>
+            Swal.fire({
+                title: "<h6>CẬP NHẬT THÀNH CÔNG !</h6>",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 2000,
+                width: "300px"
+            });
+          </script>';
+        } else if (isset($successMessage2)) {
+            echo '<script>
+            Swal.fire({
+                title: "<h6>XÓA THÀNH CÔNG !</h6>",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 2000,
+                width: "300px"
+            });
+          </script>';
+        }
+        ?>
+        <style>
+            /* Tùy chỉnh popup */
+            .custom-popup-class {
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            /* Tùy chỉnh tiêu đề */
+            .custom-title-class {
+                font-size: 20px;
+                color: #333;
+            }
+
+            /* Tùy chỉnh biểu tượng */
+            .custom-icon-class {
+                width: 40px;
+                height: 40px;
+                color: #4CAF50;
+                /* Màu xanh dương tương tự như biểu tượng thành công */
+            }
+        </style>
+        <h1 class="h3 m-0 font-weight-bold text-primary">BÀI VIẾT</h1><br>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+
+            <div class="card-body">
+                <div class="table-responsive">
+        <a href="index.php?action=create" class="create-link">Them moi</a><br></br>
+
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>email:</th>
+                                <th>Tiêu đề</th>
+                                <th>Nội dung:</th>
+                                <th>ACTION</th>
+                            </tr>
+                            <form action="index.php?action=store" method="get">
+                                <div class="search-container">
+                                
+
+                                    <!-- Bắt đầu lặp -->
+                                    <?php foreach ($data['posts'] as $r) : ?>
+
+                                        <tr>
+                                            <td><?php echo $r['id']; ?></td>
+                                            <td><?php echo $r['email']; ?></td>
+                                            <td><?php echo $r['title']; ?></td>
+                                            <td><?php echo $r['content']; ?></td>
+                                            <td>
+                                                <a href="index.php?action=edit&id=<?php echo $r['id']; ?>" class="edit-link">Sửa</a>
+                                                <a href="index.php?action=show&id=<?php echo $r['id']; ?>" class="view-link">Xem</a>
+                                                <a onclick="return confirm('Bạn có muốn xóa không ?');" href="index.php?action=destroy&id=<?php echo $r['id']; ?>" class="delete-link">Xóa</a>
+
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
     <nav class="pagination">
         <?php
         $visible_pages = min($total_pages, 2);

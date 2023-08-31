@@ -1,57 +1,49 @@
-<form action="index.php?action=store" method="post">
-<label class="form-label">Emai</label>
-                                <select name="user_id" class="form-control">
-                                    <?php foreach ($users['users'] as $r) : ?>
-                                        <option value="<?php echo $r['id']; ?>"><?php echo $r['email']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-    Tiêu đề : <input type="text" name="title"> <br>
-    Nội dụng: <input type="text" name="content"> <br>
+<form action="index.php?action=store" method="post" class="custom-form">
+    <label class="form-label">Email</label>
+    <select name="user_id" class="form-control">
+        <?php foreach ($items as $r) : ?>
+            <option value="<?php echo $r['id']; ?>"><?php echo $r['email']; ?></option>
+        <?php endforeach; ?>
+    </select>
+    <label class="form-label">Tiêu đề:</label>
+    <input type="text" name="title" class="form-input"> <br>
+    <label class="form-label">Nội dung:</label>
+    <input type="text" name="content" class="form-input"> <br></br>
 
-    <input type="submit" value="Them">
+    <input type="submit" value="Thêm" class="submit-button">
 </form>
 <style>
-    /* Form styles */
-    form {
-        width: 400px;
-        margin: 20px;
-    }
+    .custom-form {
+  width: 300px;
+  margin: 20px;
+}
 
-    .form-label {
-        display: block;
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
 
-    .form-control {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        margin-bottom: 15px;
-        font-size: 14px;
-    }
+.form-control {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 
-    input[type="submit"] {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 14px;
-    }
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-    input[type="submit"]:hover {
-        background-color: #45a049;
-    }
-    /* Input field styles */
-    input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        margin-bottom: 15px;
-        font-size: 14px;
-    }
+.submit-button:hover {
+  background-color: #45a049;
+}
 </style>

@@ -3,6 +3,19 @@
     class User
     {
 
+
+
+        public static function create()
+        {
+            global $conn;
+
+            $sql = "SELECT * FROM `users`";
+            $stmt = $conn->query($sql);
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $rows = $stmt->fetchAll();
+            return $rows;
+        
+        }
         // lay ta ca du lieu
         public static function all()
         {
@@ -17,7 +30,10 @@
                 $keyword = $_GET['search'];
                 $sql = "SELECT * FROM `users` WHERE `name` LIKE '%$keyword%'";
                 $sql_count = "SELECT COUNT(id) as total FROM users WHERE `name` LIKE '%$keyword%'";
-            } else {
+            } 
+        
+            
+            else {
                 $sql = "SELECT * FROM `users`";
                 $sql_count = "SELECT COUNT(id) as total FROM users";
             }
