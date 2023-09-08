@@ -1,0 +1,208 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap");
+:root {
+	--bg_width: 2000px;
+	--bg_height: 1333px;
+
+	--gap_left: 816px;
+	--gap_right: calc(var(--bg_width) - var(--gap_left) - 380px);
+	--gap_top: 320px;
+	--gap_bottom: calc(var(--bg_height) - var(--gap_top) - 506px);
+
+	--ratio: 1;
+	--centerShift_x: calc((100vw - var(--bg_width) * var(--ratio)) / 2);
+	--centerShift_y: calc((100vh - var(--bg_height) * var(--ratio)) / 2);
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html,
+body,
+#background {
+	overscroll-behavior-x: none;
+	overscroll-behavior-y: none;
+}
+body {
+	position: relative;
+	color: #000;
+	font-family: "Lexend", sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	width: 100vw;
+	min-height: 100vh;
+	text-align: center;
+	line-height: 1;
+	overflow-x: hidden;
+}
+#background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background-image: url("https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=2000");
+	background-size: cover;
+	background-position: center;
+}
+main {
+	position: relative;
+}
+section {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	min-height: 100vh;
+	overflow: visible;
+}
+h1,
+h2,
+p,
+a,
+li {
+	/*
+	text-shadow: -1px -1px 0px rgba(255, 255, 255, 0.8),
+		1px 1px 0px rgba(255, 255, 255, 0.8), 1px -1px 0px rgba(255, 255, 255, 0.8),
+		-1px 1px 0px rgba(255, 255, 255, 0.8);
+*/
+	filter: drop-shadow(1px 0px 0px rgba(255, 255, 255, 0.8))
+		drop-shadow(0px 1px 0px rgba(255, 255, 255, 0.8))
+		drop-shadow(-1px 0px 0px rgba(255, 255, 255, 0.8))
+		drop-shadow(0px -1px 0px rgba(255, 255, 255, 0.8));
+}
+h1 {
+	font-size: 30px;
+}
+h2 {
+	font-size: 25px;
+}
+p {
+}
+a {
+	color: blue;
+	text-decoration: none;
+}
+ul {
+	max-width: 80vw;
+	overflow-x: hidden;
+	overflow-y: visible;
+}
+li {
+	font-size: 18px;
+	text-align: left;
+	margin: 15px 0;
+}
+li a {
+	font-size: 17px;
+	filter: unset;
+}
+p a {
+	filter: unset;
+}
+img,
+canvas,
+input[type="radio"],
+label {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	pointer-events: none;
+}
+input {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	display: none;
+}
+label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+label img {
+	position: absolute;
+	top: var(--centerShift_y);
+	left: var(--centerShift_x);
+	padding-top: calc(var(--gap_top) * var(--ratio));
+	padding-left: calc(var(--gap_left) * var(--ratio));
+	padding-bottom: calc(var(--gap_bottom) * var(--ratio));
+	padding-right: calc(var(--gap_right) * var(--ratio));
+	width: calc(var(--bg_width) * var(--ratio));
+	height: calc(var(--bg_height) * var(--ratio));
+	object-fit: cover;
+}
+#blank {
+	position: absolute;
+	top: var(--centerShift_y);
+	left: var(--centerShift_x);
+	margin-top: calc(var(--gap_top) * var(--ratio));
+	margin-left: calc(var(--gap_left) * var(--ratio));
+	width: calc(
+		(var(--bg_width) - var(--gap_left) - var(--gap_right)) * var(--ratio)
+	);
+	height: calc(
+		(var(--bg_height) - var(--gap_top) - var(--gap_bottom)) * var(--ratio)
+	);
+	background: lightgray;
+}
+#border {
+	position: absolute;
+	top: var(--centerShift_y);
+	left: var(--centerShift_x);
+	margin-top: calc(var(--gap_top) * var(--ratio));
+	margin-left: calc(var(--gap_left) * var(--ratio));
+	width: calc(
+		(var(--bg_width) - var(--gap_left) - var(--gap_right)) * var(--ratio)
+	);
+	height: calc(
+		(var(--bg_height) - var(--gap_top) - var(--gap_bottom)) * var(--ratio)
+	);
+	/*
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	border-left: 1px solid rgba(255, 255, 255, 0.1);
+	border-right: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	*/
+	box-shadow: inset 1px 1px 1px rgba(120, 120, 120, 0.1),
+		inset -2px -2px 2px rgba(0, 0, 0, 0.1);
+}
+label input + * {
+	opacity: 0;
+	transition: opacity 0.78s ease;
+}
+input:checked + * {
+	opacity: 1;
+}
+footer a {
+	color: #000;
+}
+#arrow {
+	position: relative;
+	top: 40vh;
+	left: 8px;
+	font-size: 60px;
+	font-weight: 400;
+	text-shadow: unset;
+	transform-origin: center center;
+	transform: rotate(90deg);
+	animation: arrow 1s ease infinite;
+	filter: invert(1);
+	mix-blend-mode: difference;
+}
+@keyframes arrow {
+	0% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
