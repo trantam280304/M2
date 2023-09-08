@@ -1,24 +1,24 @@
 <?php
 // self
-class Sinhvien {
-    public static $soLuongSinhvien =1 ;
+// class Sinhvien {
+//     public static $soLuongSinhvien =1 ;
 
-    public function __construct() {
-        self::$soLuongSinhvien=5 ; // giá trị biến tĩnh
-    }
+//     public function __construct() {
+//         self::$soLuongSinhvien=5 ; // giá trị biến tĩnh
+    // }
 
-    public function thongTinSinhvien($value) {
-        return self::$soLuongSinhvien;
-    }
-}
+//     public function thongTinSinhvien($value) {
+//         return self::$soLuongSinhvien;
+//     }
+// }
 // khởi tạo đối tượng 
-$sv = new Sinhvien();
+// $sv = new Sinhvien();
 // echo $sv->thongTinSinhvien(); //  Tổng số sinh viên: 1
 
 // echo sinhvien::$soLuongSinhvien;
 
 // không cần khởi tạo 
-echo $sv->thongTinSinhvien(Sinhvien::$soLuongSinhvien); // Output: 1
+// echo $sv->thongTinSinhvien(Sinhvien::$soLuongSinhvien); // Output: 1
 
 
 
@@ -59,4 +59,28 @@ echo $sv->thongTinSinhvien(Sinhvien::$soLuongSinhvien); // Output: 1
 
 
 */
+
+
+
+class DoAn
+{
+    public function classType()
+    {
+        echo "Đây là DoAn";
+    }
+
+    public function echoClass() {
+        $this->classType();
+    }
+}
+
+class Pho extends DoAn
+{
+    public function classType() {
+        echo "Đây là Pho";
+    }
+}
+
+$pho = new Pho();
+$pho->echoClass(); // kết quả là Đây là Pho
 ?>

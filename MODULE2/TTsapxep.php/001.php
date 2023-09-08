@@ -5,17 +5,17 @@ $arr =  [1, 9, 4.5, 6.6, 5.7, -4.5];
     //   i ; j
 
 for($i = 0; $i < count($arr)-1;$i++){
-    $min = $i;
-    // hien tai min = 1 ;
+    $max = $i;
+    
     for($j= $i+1; $j < count($arr); $j++){
-        if($arr[$j]< $arr[$min]){
-            $min = $j;
+        if($arr[$j] < $arr[$max]){
+            $max = $j;
         }
     }
-    if($min != $i){
+    if($max != $i){
         $tempr = $arr[$i];
-        $arr[$i] = $arr[$min];
-        $arr[$min] = $tempr;
+        $arr[$i] = $arr[$max];
+        $arr[$max] = $tempr;
     }
 }
 echo "<pre>";
